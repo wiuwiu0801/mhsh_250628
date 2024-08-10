@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<br>
+전민희
+<br>
+<br>
+<input type="text" value="우리은행 1002843297696" id="copyTxt">
+<button onclick="copy()">복사하기</button>
+  <script>
+function copy() {
+  var copyTxt = document.getElementById("copyTxt");
+
+
+  copyTxt.select();
+  copyTxt.setSelectionRange(0, 99999); 
+
+  navigator.clipboard.writeText(copyTxt.value);
+
+  alert("복사되었습니다.");
+}
+ </script>
+</head>
+</html>
