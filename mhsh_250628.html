@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <p style = "font-size:200%">
+<style>
+p{text-align: center}
+</style>
 <br>
-전민희
+<p style = "font-size:300%">신부 전민희
+</p1>
 <br>
 <br>
-<input type="text" value="우리은행 1002843297696" id="copyTxt">
-<button onclick="copy()">복사하기</button>
+<input type="text" value="우리은행 1002843297696" id="copyTxt" style="font-size:100%; border:none;">
+<br>
+<button onclick="copy()" button style="font-size:100%; background-color:pink; border:none; color:white; border-radius:20px;">복사하기
+</button>
+
+
   <script>
 function copy() {
   var copyTxt = document.getElementById("copyTxt");
@@ -21,6 +28,5 @@ function copy() {
   alert("복사되었습니다.");
 }
  </script>
-  </p>
 </head>
 </html>
