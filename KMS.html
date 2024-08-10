@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+p{text-align: center}
+</style>
+<br>
+<p style = "font-size:300%">신랑 어머니 김명숙
+<br>
+<input type="text" value="우리은행 1002843297696" id="copyTxt" style="font-size:100%; color:white; border:none;">
+<br>
+<button onclick="copy()" button style="font-size:100%; background-color:pink; border:none; color:white; border-radius:20px;">복사하기
+</button>
+
+
+  <script>
+function copy() {
+  var copyTxt = document.getElementById("copyTxt");
+
+
+  copyTxt.select();
+  copyTxt.setSelectionRange(0, 99999); 
+
+  navigator.clipboard.writeText(copyTxt.value);
+
+  alert("복사되었습니다.");
+}
+ </script>
+</p>
+</head>
+</html>
