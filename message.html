@@ -59,7 +59,7 @@
     html += "<font color='pink' class='gowun-batang-bold' line-height='200%'>작성자:</font><span id='w_" + cnt + "'>" + writer + "</span><br/>";
     html += "<font color='pink' class='gowun-batang-bold' line-height='200%'>♥:</font><span id='c_" + cnt + "'>" + content + "</span><br/>";
     html += "<input type='button' value='수정' onclick='editForm(" + cnt + ")' style='background-color:pink; border:none; color:white; border-radius:20px; float: right;'>";
-    html += "<input type='button' value='삭제' onclick='del(" + cnt + ")' style='background-color:pink; border:none; color:white; border-radius:20px; float: right; margin-right: 5px;'>";
+  
     newDiv.innerHTML = html;
     cnt++;
     return newDiv;
@@ -137,15 +137,15 @@
   <form name="f">
     <table id="t1">
       <tr>
-        <th style="color:pink;" class="gowun-batang-bold">작성자</th>
+        <th class="gowun-batang-bold">작성자</th>
         <td><input type="text" name="writer" id="writer" style="width:200px;"></td>
       </tr>
       <tr>
-        <th style="color:pink;" class="gowun-batang-bold">글 비밀번호</th>
+        <th class="gowun-batang-bold">글 비밀번호</th>
         <td><input type="password" name="pwd" id="pwd" style="width:200px;"></td>
       </tr>
       <tr>
-        <th style="color:pink;" class="gowun-batang-bold">내용</th>
+        <th class="gowun-batang-bold">내용</th>
         <td><input type="text" name="content" id="content" style="width:200px; height:50px;"></td>
       </tr>
       <tr>
