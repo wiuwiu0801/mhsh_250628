@@ -1,184 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="EUC-KR">
-<title>축하의 말</title>
-<style type="text/css">
-#t1, div {
-  border: 1px solid white;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
-
-.gowun-batang-regular {
-  font-family: "Gowun Batang", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.gowun-batang-bold {
-  font-family: "Gowun Batang", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-</style>
-<script>
-  let cnt = 1;
-
-  // 페이지 로드 시 기존 데이터 불러오기
-  window.onload = function() {
-    let savedMessages = JSON.parse(localStorage.getItem('messages')) || [];
-    savedMessages.forEach((msg) => {
-      let el = mkDiv(msg.writer, msg.pwd, msg.content);
-      document.getElementById("list").appendChild(el);
-    });
-    cnt = savedMessages.length + 1;  // 새로 추가할 메시지의 cnt 값 설정
-  }
-
-  function a() {
-    let writer = f.writer.value;
-    let pwd = f.pwd.value;
-    let content = f.content.value;
-    let el = mkDiv(writer, pwd, content);
-    let list = document.getElementById("list");
-    list.appendChild(el);
-
-    // 작성한 내용 저장
-    saveMessage(writer, pwd, content);
-
-    f.writer.value = "";
-    f.pwd.value = "";
-    f.content.value = "";
-  }
-
-  function mkDiv(writer, pwd, content) {
-    let newDiv = document.createElement("div");
-    newDiv.id = "d_" + cnt;
-    newDiv.pwd = pwd;
-    let html = "";
-    html += "<font color='pink' class='gowun-batang-bold' line-height='200%'>작성자:</font><span id='w_" + cnt + "'>" + writer + "</span><br/>";
-    html += "<font color='pink' class='gowun-batang-bold' line-height='200%'>♥:</font><span id='c_" + cnt + "'>" + content + "</span><br/>";
-    html += "<input type='button' value='수정' onclick='editForm(" + cnt + ")' style='background-color:pink; border:none; color:white; border-radius:20px; float: right;'>";
-  
-    newDiv.innerHTML = html;
-    cnt++;
-    return newDiv;
-  }
-
-  function saveMessage(writer, pwd, content) {
-    let savedMessages = JSON.parse(localStorage.getItem('messages')) || [];
-    savedMessages.push({ writer, pwd, content });
-    localStorage.setItem('messages', JSON.stringify(savedMessages));
-  }
-
-  function editForm(cnt) {
-    let editDiv = document.getElementById("d_" + cnt);
-    let editForm = document.getElementById("editf");
-    editDiv.appendChild(editForm);
-    let writer = document.getElementById("w_" + cnt).innerHTML;
-    let content = document.getElementById("c_" + cnt).innerHTML;
-    document.getElementById("editwriter").value = writer;
-    document.getElementById("editcontent").value = content;
-    document.getElementById("editbtn").cnt = cnt;
-    editForm.style.display = '';
-  }
-
-  function cancel() {
-    let editForm = document.getElementById("editf");
-    editForm.style.display = 'none';
-    document.getElementsByTagName("body")[0].appendChild(editForm);
-  }
-
-  function edit() {
-    let cnt = document.getElementById("editbtn").cnt;
-    let editDiv = document.getElementById("d_" + cnt);
-    let pwd2 = document.getElementById("editpwd").value;
-    if (editDiv.pwd != pwd2) {
-      alert("글 비밀번호 불일치. 수정불가");
-    } else {
-      let newWriter = document.getElementById("editwriter").value;
-      let newContent = document.getElementById("editcontent").value;
-      document.getElementById("w_" + cnt).innerHTML = newWriter;
-      document.getElementById("c_" + cnt).innerHTML = newContent;
-      updateMessage(cnt, newWriter, newContent);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메시지 작성</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
-    document.getElementById("editwriter").value = "";
-    document.getElementById("editcontent").value = "";
-    document.getElementById("editpwd").value = "";
-    cancel();
-  }
 
-  function updateMessage(cnt, newWriter, newContent) {
-    let savedMessages = JSON.parse(localStorage.getItem('messages')) || [];
-    savedMessages[cnt - 1] = { writer: newWriter, pwd: savedMessages[cnt - 1].pwd, content: newContent };
-    localStorage.setItem('messages', JSON.stringify(savedMessages));
-  }
-
-  function del(cnt) {
-    let pwd = prompt("글 비밀번호");
-    let delDiv = document.getElementById("d_" + cnt);
-    if (pwd == delDiv.pwd) {
-      document.getElementById("list").removeChild(delDiv);
-      deleteMessage(cnt);
-    } else {
-      alert("글 비밀번호 불일치. 삭제취소");
+    table {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-  }
 
-  function deleteMessage(cnt) {
-    let savedMessages = JSON.parse(localStorage.getItem('messages')) || [];
-    savedMessages.splice(cnt - 1, 1); // 해당 메시지 삭제
-    localStorage.setItem('messages', JSON.stringify(savedMessages));
-  }
-</script>
+    td {
+      padding: 10px;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 200px;
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="button"] {
+      background-color: pink;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+      background-color: #f46d7f;
+    }
+
+    .message-list {
+      margin-top: 30px;
+      width: 80%;
+    }
+
+    .message-item {
+      background-color: #fff;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .message-item p {
+      margin: 5px 0;
+    }
+  </style>
 </head>
 <body>
 
-  <form name="f">
-    <table id="t1">
+  <!-- 메시지 작성 폼 -->
+  <form id="messageForm">
+    <table>
       <tr>
-        <th class="gowun-batang-bold">작성자</th>
-        <td><input type="text" name="writer" id="writer" style="width:200px;"></td>
+        <th>작성자</th>
+        <td><input type="text" id="writer" placeholder="작성자"></td>
       </tr>
       <tr>
-        <th class="gowun-batang-bold">글 비밀번호</th>
-        <td><input type="password" name="pwd" id="pwd" style="width:200px;"></td>
+        <th>글 비밀번호</th>
+        <td><input type="password" id="pwd" placeholder="비밀번호"></td>
       </tr>
       <tr>
-        <th class="gowun-batang-bold">내용</th>
-        <td><input type="text" name="content" id="content" style="width:200px; height:50px;"></td>
+        <th>내용</th>
+        <td><input type="text" id="content" placeholder="내용"></td>
       </tr>
       <tr>
-        <th style="color:white;">작성</th>
-        <td><input type="button" value="작성" onclick="a()" style="background-color:pink; border:none; color:white; border-radius:20px;"></td>
+        <td colspan="2">
+          <input type="button" value="작성" onclick="submitMessage()">
+        </td>
       </tr>
     </table>
   </form>
 
-  <div id="list"></div>
+  <!-- 메시지 목록 -->
+  <div class="message-list" id="messageList"></div>
 
-  <!-- 수정폼 -->
-  <table id="editf" style="display: none;">
-    <tr>
-      <th style="color:pink;" class="gowun-batang-bold">작성자</th>
-      <td><input type="text" name="editwriter" id="editwriter" style="width:200px;"></td>
-    </tr>
-    <tr>
-      <th style="color:pink;" class="gowun-batang-bold">글 비밀번호</th>
-      <td><input type="password" name="editpwd" id="editpwd" style="width:200px;"></td>
-    </tr>
-    <tr>
-      <th style="color:pink;" class="gowun-batang-bold">내용</th>
-      <td><input type="text" name="editcontent" id="editcontent" style="width:200px; height:50px;"></td>
-    </tr>
-    <tr>
-      <th style="color:pink;" class="gowun-batang-bold">수정완료</th>
-      <td>
-        <input type="button" value="수정완료" id="editbtn" onclick="edit()" style="background-color:pink; border:none; color:white; border-radius:20px;">
-        <input type="button" value="취소" onclick="cancel()" style="background-color:pink; border:none; color:white; border-radius:20px;">
-      </td>
-    </tr>
-  </table>
+  <script>
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycby1JprlKoFFjkr88xYPEX-gygsueT-4nLZ_EQweHbeAdqK77HVprT_s3YLNtVb1WAFT/exec'; // Google Apps Script 웹 앱 URL을 입력하세요
+
+    // 메시지 작성 함수
+    function submitMessage() {
+      const writer = document.getElementById("writer").value;
+      const pwd = document.getElementById("pwd").value;
+      const content = document.getElementById("content").value;
+
+      if (!writer || !pwd || !content) {
+        alert('모든 필드를 입력하세요.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('writer', writer);
+      formData.append('pwd', pwd);
+      formData.append('content', content);
+
+      // POST 요청으로 데이터 저장
+      fetch(webAppUrl, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(responseText => {
+        alert('메시지가 성공적으로 저장되었습니다!');
+        loadMessages(); // 메시지 목록 새로 고침
+        document.getElementById("messageForm").reset();
+      })
+      .catch(error => {
+        alert('메시지 저장에 실패했습니다. 다시 시도해 주세요.');
+        console.error('Error:', error);
+      });
+    }
+
+    // 저장된 메시지 불러오기
+    function loadMessages() {
+      fetch(webAppUrl)
+        .then(response => response.json())
+        .then(messages => {
+          const messageList = document.getElementById('messageList');
+          messageList.innerHTML = ''; // 기존 메시지 목록 초기화
+
+          messages.forEach(msg => {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message-item';
+            messageDiv.innerHTML = `
+              <p><strong>작성자:</strong> ${msg.writer}</p>
+              <p><strong>내용:</strong> ${msg.content}</p>
+            `;
+            messageList.appendChild(messageDiv);
+          });
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // 페이지 로드 시 메시지 불러오기
+    window.onload = loadMessages;
+  </script>
 
 </body>
 </html>
