@@ -57,5 +57,21 @@
     <button onclick="copy()">계좌번호 복사하기</button>
   </div>
 
-  <script>
-    fun
+ <script>
+    function copy() {
+      var copyTxt = document.getElementById("copyTxt");
+
+      // 입력 필드 선택
+      copyTxt.select();
+      copyTxt.setSelectionRange(0, 99999); // 모바일에서도 작동하도록 설정
+
+      // 클립보드에 텍스트 복사
+      navigator.clipboard.writeText(copyTxt.value);
+
+      // 복사 완료 알림
+      alert("복사되었습니다.");
+    }
+  </script>
+
+</body>
+</html>
