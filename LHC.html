@@ -5,6 +5,11 @@
     p {
       text-align: center;
     }
+
+    /* 텍스트가 드래그되지 않도록 설정 */
+    #copyTxt {
+      user-select: none;  /* 텍스트 선택 방지 */
+    }
   </style>
 </head>
 <body>
@@ -13,7 +18,7 @@
   <p style="font-size:300%">(신랑 어머니 김명숙)</p>
 
   <br>
-  <input type="text" value="농협은행" id="copyTxt" style="font-size:100%; color:white; border:none;"> 
+  <input type="text" value="농협은행" id="copyTxt" style="font-size:100%; color:white; border:none; background-color:pink; text-align:center;"> 
   <br>
   <button onclick="copy()" style="font-size:100%; background-color:pink; border:none; color:white; border-radius:20px;">
     계좌번호 복사하기
