@@ -24,6 +24,12 @@
       flex-direction: column;
     }
 
+    /* 버튼 컨테이너 */
+    .button-container {
+      display: flex; /* 버튼들을 가로로 정렬 */
+      gap: 20px; /* 버튼 사이에 간격을 줌 */
+    }
+
     /* 버튼 스타일 */
     button {
       font-size: 300%;
@@ -33,7 +39,6 @@
       border-radius: 20px;
       padding: 15px 30px;
       cursor: pointer;
-      margin-top: 20px;
     }
 
     /* 텍스트 입력 필드 */
@@ -55,7 +60,7 @@
 
     /* 신부 아버지에 파스텔옐로우 형광펜 효과 적용 */
     .highlight {
-      background-color: #FFF2CC; /* 파스텔 옐로우 */
+      background-color: #FFF59D; /* 파스텔 옐로우 */
       padding: 0 5px; /* 글자 주변에 여백을 추가하여 형광펜 느낌 */
     }
   </style>
@@ -70,7 +75,12 @@
     <br>
     <input type="text" value="국민은행" id="copyTxt"> 
     <br>
-    <button onclick="copy()">계좌번호 복사하기</button>
+
+    <!-- 버튼들을 가로로 배치하는 컨테이너 추가 -->
+    <div class="button-container">
+      <button onclick="copy()">계좌번호 복사하기</button>
+      <button onclick="copy()">계좌번호 복사하기</button> <!-- 두 번째 버튼 추가 -->
+    </div>
   </div>
 
   <script>
