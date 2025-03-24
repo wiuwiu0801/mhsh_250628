@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <style>
-
     /* 고덕바탕 폰트 임포트 */
     @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
 
@@ -24,20 +23,36 @@
       flex-direction: column;
     }
 
+    /* 타이틀을 가로로 배치 */
+    .name-container {
+      display: flex;
+      flex-direction: column; /* 세로로 나열 */
+      align-items: center;
+      justify-content: center;
+      gap: 10px; /* 타이틀과 이름 사이의 간격 */
+    }
+
+    /* 버튼 컨테이너 */
+    .button-container {
+      display: flex; /* 버튼들을 가로로 정렬 */
+      gap: 20px; /* 버튼 사이에 간격을 줌 */
+      justify-content: center; /* 버튼들을 중앙 정렬 */
+      margin-top: 20px;
+    }
+
     /* 버튼 스타일 */
     button {
-      font-size: 300%;
+      font-size: 200%;
       background-color: pink;
       border: none;
       color: white;
       border-radius: 20px;
       padding: 15px 30px;
       cursor: pointer;
-      margin-top: 20px;
     }
 
     /* 텍스트 입력 필드 */
-    #copyTxt {
+    .copyTxt {
       font-size: 100%;
       color: white;
       border: 1px solid white;
@@ -52,23 +67,82 @@
       line-height: 1.2; /* 행간을 좁게 설정 */
       margin: 0; /* p 태그의 기본 마진을 제거 */
     }
+
+    /* 신부 아버지에 파스텔옐로우 형광펜 효과 적용 */
+    .highlight {
+      background-color: #d9ead3;
+      padding: 0 5px; /* 글자 주변에 여백을 추가하여 형광펜 느낌 */
+    }
   </style>
 </head>
 <body>
+    <!-- 신랑 아버지 -->
+    <div class="name-container">
+      <p style="font-size:250%" class="highlight">신랑 아버지</p>
+      <p style="font-size:500%">이희철</p>
+      <br>
+      <p style="font-size:200%">(신랑 어머니 김명숙)</p>
+    </div>
 
-  <div class="container">
-    <p style="font-size:300%">신랑 아버지 이희철</p>
-    <p style="font-size:200%">(신랑 어머니 김명숙)</p>
+    <input type="text" value="농협 601143520210900" class="copyTxt" id="account1">
+    
+    <!-- 버튼들을 가로로 배치하는 컨테이너 -->
+    <div class="button-container">
+      <a href="tel:0103889">
+        <button>연락 하기</button>
+      </a>
+      <button onclick="copy('account1')">계좌번호 복사하기</button>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7pldTAdUSHT7Yp3hUi36XaEr8vCWaC9So53EcFt73v6SxMw/viewform">
+        <button>축하의 말 적기</button>
+      </a>
+    </div>
 
-    <br>
-    <input type="text" value="농협 60114352021090" id="copyTxt"> 
-    <br>
-    <button onclick="copy()">계좌번호 복사하기</button>
+    <br><br><br><br>
+
+    <!-- 신랑랑 어머니 -->
+    <div class="name-container">
+      <p style="font-size:250%" class="highlight">신랑 어머니</p>
+      <p style="font-size:500%">김명숙</p>
+    </div>
+
+    <input type="text" value="농협 601143520210900" class="copyTxt" id="account2">
+    
+    <!-- 버튼들을 가로로 배치하는 컨테이너 -->
+    <div class="button-container">
+      <a href="tel:01029323889">
+        <button>연락 하기</button>
+      </a>
+      <button onclick="copy('account2')">계좌번호 복사하기</button>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7pldTAdUSHT7Yp3hUi36XaEr8vCWaC9So53EcFt73v6SxMw/viewform">
+        <button>축하의 말 적기</button>
+      </a>
+    </div>
+
+    <br><br><br><br>
+
+    <!-- 신랑 -->
+    <div class="name-container">
+      <p style="font-size:250%" class="highlight">신랑</p>
+      <p style="font-size:500%">이상효</p>
+    </div>
+
+    <input type="text" value="농협 3120098188621" class="copyTxt" id="account3">
+    
+    <!-- 버튼들을 가로로 배치하는 컨테이너 -->
+    <div class="button-container">
+      <a href="tel:01043343889">
+        <button>연락 하기</button>
+      </a>
+      <button onclick="copy('account3')">계좌번호 복사하기</button>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7pldTAdUSHT7Yp3hUi36XaEr8vCWaC9So53EcFt73v6SxMw/viewform">
+        <button>축하의 말 적기</button>
+      </a>
+    </div>
   </div>
 
   <script>
-    function copy() {
-      var copyTxt = document.getElementById("copyTxt");
+    function copy(accountId) {
+      var copyTxt = document.getElementById(accountId);
 
       // 입력 필드 선택
       copyTxt.select();
