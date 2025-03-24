@@ -26,10 +26,10 @@
     /* 타이틀을 가로로 배치 */
     .name-container {
       display: flex;
+      flex-direction: column; /* 세로로 나열 */
       align-items: center;
       justify-content: center;
-      gap: 20px; /* 텍스트와 입력 필드 간격 */
-      flex-wrap: wrap; /* 화면 크기에 따라 줄바꿈 가능 */
+      gap: 10px; /* 타이틀과 이름 사이의 간격 */
     }
 
     /* 버튼 컨테이너 */
@@ -37,6 +37,7 @@
       display: flex; /* 버튼들을 가로로 정렬 */
       gap: 20px; /* 버튼 사이에 간격을 줌 */
       justify-content: center; /* 버튼들을 중앙 정렬 */
+      margin-top: 20px;
     }
 
     /* 버튼 스타일 */
@@ -83,10 +84,8 @@
       <p style="font-size:300%">전창식</p>
     </div>
 
-    <br>
     <input type="text" value="국민은행" class="copyTxt">
-    <br>
-
+    
     <!-- 버튼들을 가로로 배치하는 컨테이너 -->
     <div class="button-container">
       <a href="tel:01029355295">
@@ -106,10 +105,8 @@
       <p style="font-size:300%">김미혜</p>
     </div>
 
-    <br>
     <input type="text" value="국민은행" class="copyTxt">
-    <br>
-
+    
     <!-- 버튼들을 가로로 배치하는 컨테이너 -->
     <div class="button-container">
       <a href="tel:01029355295">
@@ -129,10 +126,8 @@
       <p style="font-size:300%">전민희</p>
     </div>
 
-    <br>
     <input type="text" value="국민은행" class="copyTxt">
-    <br>
-
+    
     <!-- 버튼들을 가로로 배치하는 컨테이너 -->
     <div class="button-container">
       <a href="tel:01029355295">
