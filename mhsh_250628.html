@@ -84,14 +84,14 @@
       <p style="font-size:300%">전창식</p>
     </div>
 
-    <input type="text" value="국민은행" class="copyTxt">
+    <input type="text" value="국민은행 001" class="copyTxt" id="account1">
     
     <!-- 버튼들을 가로로 배치하는 컨테이너 -->
     <div class="button-container">
       <a href="tel:01029355295">
         <button>연락 하기</button>
       </a>
-      <button onclick="copy()">계좌번호 복사하기</button>
+      <button onclick="copy('account1')">계좌번호 복사하기</button>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7pldTAdUSHT7Yp3hUi36XaEr8vCWaC9So53EcFt73v6SxMw/viewform">
         <button>축하의 말 적기</button>
       </a>
@@ -105,14 +105,14 @@
       <p style="font-size:300%">김미혜</p>
     </div>
 
-    <input type="text" value="국민은행" class="copyTxt">
+    <input type="text" value="국민은행 002" class="copyTxt" id="account2">
     
     <!-- 버튼들을 가로로 배치하는 컨테이너 -->
     <div class="button-container">
       <a href="tel:01029355295">
         <button>연락 하기</button>
       </a>
-      <button onclick="copy()">계좌번호 복사하기</button>
+      <button onclick="copy('account2')">계좌번호 복사하기</button>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7pldTAdUSHT7Yp3hUi36XaEr8vCWaC9So53EcFt73v6SxMw/viewform">
         <button>축하의 말 적기</button>
       </a>
@@ -126,14 +126,14 @@
       <p style="font-size:300%">전민희</p>
     </div>
 
-    <input type="text" value="국민은행" class="copyTxt">
+    <input type="text" value="국민은행 003" class="copyTxt" id="account3">
     
     <!-- 버튼들을 가로로 배치하는 컨테이너 -->
     <div class="button-container">
       <a href="tel:01029355295">
         <button>연락 하기</button>
       </a>
-      <button onclick="copy()">계좌번호 복사하기</button>
+      <button onclick="copy('account3')">계좌번호 복사하기</button>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7pldTAdUSHT7Yp3hUi36XaEr8vCWaC9So53EcFt73v6SxMw/viewform">
         <button>축하의 말 적기</button>
       </a>
@@ -141,18 +141,18 @@
   </div>
 
   <script>
-    function copy() {
-      var copyTxts = document.querySelectorAll(".copyTxt");
+    function copy(accountId) {
+      var copyTxt = document.getElementById(accountId);
 
-      // 각 입력 필드 선택하여 복사
-      copyTxts.forEach(function(copyTxt) {
-        copyTxt.select();
-        copyTxt.setSelectionRange(0, 99999); // 모바일에서도 작동하도록 설정
-        navigator.clipboard.writeText(copyTxt.value);
-        
-        // 복사 완료 알림
-        alert("복사되었습니다.");
-      });
+      // 입력 필드 선택
+      copyTxt.select();
+      copyTxt.setSelectionRange(0, 99999); // 모바일에서도 작동하도록 설정
+
+      // 클립보드에 텍스트 복사
+      navigator.clipboard.writeText(copyTxt.value);
+
+      // 복사 완료 알림
+      alert("복사되었습니다.");
     }
   </script>
 
