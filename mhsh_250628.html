@@ -23,10 +23,20 @@
       flex-direction: column;
     }
 
+    /* 타이틀을 가로로 배치 */
+    .name-container {
+      display: flex;
+      align-items: center;
+      gap: 20px; /* 텍스트와 입력 필드 간격 */
+      justify-content: center;
+      flex-wrap: wrap; /* 화면 크기에 따라 줄바꿈 가능 */
+    }
+
     /* 버튼 컨테이너 */
     .button-container {
       display: flex; /* 버튼들을 가로로 정렬 */
       gap: 20px; /* 버튼 사이에 간격을 줌 */
+      justify-content: center; /* 버튼들을 중앙 정렬 */
     }
 
     /* 버튼 스타일 */
@@ -67,22 +77,22 @@
 <body>
 
   <div class="container">
-    <p style="font-size:100%" class="highlight">신부 아버지</p>
-    <p style="font-size:300%">전창식</p>
+    <!-- 신부 아버지 -->
+    <div class="name-container">
+      <p style="font-size:100%" class="highlight">신부 아버지</p>
+      <p style="font-size:300%">전창식</p>
+    </div>
 
     <br>
-    <input type="text" value="국민은행" class="copyTxt"> 
+    <input type="text" value="국민은행" class="copyTxt">
     <br>
 
-    <!-- 버튼들을 가로로 배치하는 컨테이너 추가 -->
+    <!-- 버튼들을 가로로 배치하는 컨테이너 -->
     <div class="button-container">
-      <!-- 전화 연결을 위한 a 태그 사용 -->
       <a href="tel:01029355295">
         <button>연락 하기</button>
       </a>
-
       <button onclick="copy()">계좌번호 복사하기</button>
-
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7pldTAdUSHT7Yp3hUi36XaEr8vCWaC9So53EcFt73v6SxMw/viewform">
         <button>축하의 말 적기</button>
       </a>
@@ -90,20 +100,22 @@
 
     <br><br>
 
-    <p style="font-size:100%" class="highlight">신부 어머니</p>
-    <p style="font-size:300%">김미혜</p>
+    <!-- 신부 어머니 -->
+    <div class="name-container">
+      <p style="font-size:100%" class="highlight">신부 어머니</p>
+      <p style="font-size:300%">김미혜</p>
+    </div>
 
     <br>
     <input type="text" value="국민은행" class="copyTxt">
     <br>
 
+    <!-- 버튼들을 가로로 배치하는 컨테이너 -->
     <div class="button-container">
       <a href="tel:01029355295">
         <button>연락 하기</button>
       </a>
-
       <button onclick="copy()">계좌번호 복사하기</button>
-
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7pldTAdUSHT7Yp3hUi36XaEr8vCWaC9So53EcFt73v6SxMw/viewform">
         <button>축하의 말 적기</button>
       </a>
